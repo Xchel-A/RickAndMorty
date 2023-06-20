@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import { userDetail } from "../../utils/userDb";
+import { userDetail,user } from "../../utils/userDb";
+
 export default function LoginForm() {
     const [error , setError]= useState("")
     const formik = useFormik({
@@ -11,6 +12,8 @@ export default function LoginForm() {
         validationSchema: Yup.object(validationSchema()),
         validateOnChange:false,
         onSubmit:(formData)=>{
+            setError("")
+            const {username , password} = formData;
             if (username!== user.username || password!== user.password) {
                 console.log('Usuario o contrasela incorrectos')
             }else{
@@ -19,9 +22,9 @@ export default function LoginForm() {
             }
 
 
-
+/*
             console.log('Formulario enviado');
-            console.log(formData);
+            console.log(formData);*/
         }
     })
     function initialValues(){
@@ -91,5 +94,11 @@ const styles = StyleSheet.create({
     
     
         
-    }
+    },
+    error: {
+        textAlign: 'center',
+        color: 'red',
+        marginTop: 5,
+      },
+      
 })
