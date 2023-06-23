@@ -8,3 +8,7 @@ export default function Favoritos() {
     </SafeAreaView>
   )
 }
+
+Favoritos.navigationOptions = {
+  headerShown: false,
+};

@@ -4,8 +4,9 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import { userDetail,user } from "../../utils/userDb";
+import Toast from 'react-native-toast-message';
 
-export default function LoginForm() {
+export default function LoginForm({navigation }) {
     const [error , setError]= useState("")
     const formik = useFormik({
         initialValues :initialValues(),
@@ -16,9 +17,26 @@ export default function LoginForm() {
             const {username , password} = formData;
             if (username!== user.username || password!== user.password) {
                 console.log('Usuario o contrasela incorrectos')
+                 // Mostrar el toast al cargar el componente
+                 Toast.show({
+                    type: 'error',
+                    text1: 'ERROR',
+                    text2: 'Las credenciales son incorrectas',
+                    position: 'top',
+                });
             }else{
                 console.log('Iniciando sesion...');
                 console.log(userDetail);
+                Toast.show({
+                    type: 'success',
+                    text1: 'ÉXITO',
+                    text2: 'Iniciando sesión',
+                    position: 'top',
+                });
+                 // Actualizar el estado de autenticación (auth) a verdadero
+                //setAuth(true);
+                // Redirigir a la pantalla de inicio (Home)
+                navigation.replace('Home');
             }
 
 
@@ -41,6 +59,7 @@ export default function LoginForm() {
     }
     return(
         <View> 
+            <Toast ref={(ref) => Toast.setRef(ref)} />
             <Text style={styles.tittle}>Iniciar Sesion</Text>
             <TextInput 
                 placeholder="Nombre de usuario"
@@ -60,6 +79,7 @@ export default function LoginForm() {
             </TouchableOpacity>
             <Text style={styles.error}>{formik.errors.username}</Text>
             <Text style={styles.error}>{formik.errors.password}</Text>
+            
         </View>
     )
     

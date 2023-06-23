@@ -3,10 +3,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import React from 'react'
-import Account from '../screen/Account'
 import Favoritos from '../screen/Favoritos'
 import Rickandmorty from '../screen/Rickandmorty'
-import NavigationAccount from './NavigationAccount';
+import Account from '../screen/Account';
 import NavigationFavoritos from './NavigationFavoritos';
 import NavigationRickandMorty from './NavigationRickandMorty';
 
@@ -38,7 +37,7 @@ export default function Navigation() {
     >
         <Tab.Screen 
             name='Account' 
-            component={NavigationAccount}
+            component={Account}
         />
         <Tab.Screen 
             name='RickandMorty' 
@@ -52,6 +51,10 @@ export default function Navigation() {
         <Tab.Screen 
             name='Favoritos' 
             component={NavigationFavoritos}
+            options={{
+              tabBarLabel:"",
+             
+          }}
         />
     </Tab.Navigator>
   )
