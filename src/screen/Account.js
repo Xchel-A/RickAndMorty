@@ -10,18 +10,12 @@ export default function Account() {
       <View style={styles.card}>
         <Image source={Icono} style={styles.image} />
         <View style={styles.cardContent}>
-          <Text style={styles.label}>Mi Cuenta</Text>
-          <Text style={styles.label}>Usuario</Text>
-          <Text style={styles.text}>{user.username}</Text>
-
-          <Text style={styles.label}>Nombre</Text>
-          <Text style={styles.text}>{userDetail.fristName}</Text>
-
-          <Text style={styles.label}>Apellido</Text>
-          <Text style={styles.text}>{userDetail.lastName}</Text>
-
-          <Text style={styles.label}>Correo</Text>
-          <Text style={styles.text}>{userDetail.email}</Text>
+        <View style={styles.infoView}><Text style={styles.infoText}>Usuario: </Text><Text style={styles.infoCharacter}>{user.username}</Text></View>
+        <View style={styles.infoView}><Text style={styles.infoText}>Nombre: </Text><Text style={styles.infoCharacter}>{userDetail.fristName}</Text></View>
+        <View style={styles.infoView}><Text style={styles.infoText}>Apellido: </Text><Text style={styles.infoCharacter}>{userDetail.lastName}</Text></View>
+        <View style={styles.infoView}><Text style={styles.infoText}>Correo: </Text><Text style={styles.infoCharacter}>{userDetail.email}</Text></View>
+        <View style={styles.infoView}><Text style={styles.infoText}>Especie: </Text><Text style={styles.infoCharacter}>Humano</Text></View>   
+         
         </View>
       </View>
     </SafeAreaView>
@@ -39,7 +33,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 10,
     shadowColor: '#000',
-    width:340,
+    width:370,
     height:580,
     shadowOffset: {
       width: 0,
@@ -68,4 +62,37 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 10,
   },
+  infoContainer:{
+    alignContent:'center',
+  },
+  propTitle:{
+    fontSize:20,
+    color:'gray',
+    textAlign:'center'
+  },
+  infoView:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center',
+    height:35,
+    marginBottom:15
+  },
+  infoText:{
+    fontWeight:'bold',
+    fontSize:18,
+    backgroundColor:"#69C8ECFF",
+    borderRadius:8,
+    textAlign:'center',
+    padding:2,
+    width:100,
+    marginRight:10,
+  },
+  infoCharacter:{
+    fontSize:16,
+    backgroundColor:"#B7E4F9FF",
+    borderRadius:8,
+    textAlign:'center',
+    padding:2,
+    width:240,
+  }
 });
